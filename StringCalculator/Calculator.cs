@@ -4,9 +4,10 @@ namespace StringCalculator
 {
     public class Calculator
     {
-        public static int Add(string empty)
+        public static int Add(string values)
         {
-            return 0;
+            if(string.IsNullOrEmpty(values)) return 0;
+            return 1;
         }
     }
 }

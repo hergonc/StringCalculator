@@ -11,5 +11,12 @@ namespace StringCalculator.Test
             int result = Calculator.Add("");
             Assert.Equal(0, result);
         }
+
+        [Fact]
+        public void Add1String()
+        {
+            int result = Calculator.Add("1");
+            Assert.Equal(1, result);
+        }
     }
 }
