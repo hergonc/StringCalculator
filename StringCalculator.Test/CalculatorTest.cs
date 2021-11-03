@@ -15,6 +15,7 @@ namespace StringCalculator.Test
         [Theory]
         [InlineData("1", 1)]
         [InlineData("2", 2)]
+        [InlineData("1,2", 3)]
         public void Add1String(string value, int resultExpected)
         {
             int result = Calculator.Add(value);
