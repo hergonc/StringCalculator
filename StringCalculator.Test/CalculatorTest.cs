@@ -12,11 +12,13 @@ namespace StringCalculator.Test
             Assert.Equal(0, result);
         }
 
-        [Fact]
-        public void Add1String()
+        [Theory]
+        [InlineData("1", 1)]
+        [InlineData("2", 2)]
+        public void Add1String(string value, int resultExpected)
         {
-            int result = Calculator.Add("1");
-            Assert.Equal(1, result);
+            int result = Calculator.Add(value);
+            Assert.Equal(resultExpected, result);
         }
     }
 }
