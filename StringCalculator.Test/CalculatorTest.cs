@@ -5,17 +5,12 @@ namespace StringCalculator.Test
 {
     public class CalculatorTest
     {
-        [Fact]
-        public void AddEmptyString()
-        {
-            int result = Calculator.Add("");
-            Assert.Equal(0, result);
-        }
-
         [Theory]
+        [InlineData("", 0)]
         [InlineData("1", 1)]
         [InlineData("2", 2)]
         [InlineData("1,2", 3)]
+        [InlineData("2,2", 4)]
         public void Add1String(string value, int resultExpected)
         {
             int result = Calculator.Add(value);

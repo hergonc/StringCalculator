@@ -8,7 +8,7 @@ namespace StringCalculator
         {
             if(string.IsNullOrEmpty(values)) return 0;
             if(!values.Contains(",")) return int.Parse((values));
-            return 3;
+            return int.Parse(values.Split(',')[0]) + int.Parse(values.Split(',')[1]);
         }
     }
 }
