@@ -1,4 +1,5 @@
 using System;
+using FluentAssertions;
 using Xunit;
 
 namespace StringCalculator.Test
@@ -15,10 +16,20 @@ namespace StringCalculator.Test
         [InlineData("1,2,2", 5)]
         [InlineData("1\n2,3", 6)]
         [InlineData("1\n2\n3\n4", 10)]
-        public void Add1String(string value, int resultExpected)
+        [InlineData("//;\n1;2", 3)]
+        public void AddString(string value, int resultExpected)
         {
             int result = Calculator.Add(value);
             Assert.Equal(resultExpected, result);
+        }
+
+        [Fact]
+        public void ExceptionWithNegativeNumber()
+        {
+            Action action = () => Calculator.Add("1,-2");
+            action.Should()
+                .Throw<ArgumentException>()
+                .Where(e => e.Message.StartsWith("negatives not allowed"));
         }
     }
 }
