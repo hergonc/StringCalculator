@@ -13,6 +13,8 @@ namespace StringCalculator.Test
         [InlineData("2,2", 4)]
         [InlineData("1,2,1", 4)]
         [InlineData("1,2,2", 5)]
+        [InlineData("1\n2,3", 6)]
+        [InlineData("1\n2\n3\n4", 10)]
         public void Add1String(string value, int resultExpected)
         {
             int result = Calculator.Add(value);
