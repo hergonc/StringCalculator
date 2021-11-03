@@ -7,8 +7,7 @@ namespace StringCalculator
         public static int Add(string values)
         {
             if(string.IsNullOrEmpty(values)) return 0;
-            if(values == "1") return 1;
-            return 2;
+            return int.Parse((values));
         }
     }
 }
