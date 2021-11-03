@@ -12,6 +12,7 @@ namespace StringCalculator.Test
         [InlineData("2", 2)]
         [InlineData("1,2", 3)]
         [InlineData("2,2", 4)]
+        [InlineData("2,1001", 2)]
         [InlineData("1,2,1", 4)]
         [InlineData("1,2,2", 5)]
         [InlineData("1\n2,3", 6)]
