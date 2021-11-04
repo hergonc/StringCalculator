@@ -29,12 +29,23 @@ namespace StringCalculator.Test
         [InlineData("-5,-3")]
         [InlineData("1\n2,-3")]
         [InlineData("//;\n-1;2")]
+        [InlineData("//[***]\n1***2***-3")]
         public void ExceptionWithNegativeNumber(string negativeValue)
         {
             Action action = () => Calculator.Add(negativeValue);
             action.Should()
                 .Throw<ArgumentException>()
                 .Where(e => e.Message.StartsWith("negatives not allowed"));
+        }
+
+        [Theory]
+        [InlineData("//[***]\n1***2***3", 6)]
+        [InlineData("//[++]\n1++2++3", 6)]
+        [InlineData("//[////]\n1////2////3////4", 10)]
+        public void AddStringWithDelimiterCanBeAnyLength(string value, int resultExpected)
+        {
+            int result = Calculator.Add(value);
+            Assert.Equal(resultExpected, result);
         }
     }
 }

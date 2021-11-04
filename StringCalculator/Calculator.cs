@@ -9,8 +9,13 @@ namespace StringCalculator
         public static int Add(string values)
         {
             if (string.IsNullOrEmpty(values)) return 0;
-            List<string> delimiter = new List<string>(){",", "\n"};
-            if (values.StartsWith("//"))
+            List<string> delimiter = new List<string>() { ",", "\n" };
+            if (values.StartsWith("//["))
+            {
+                delimiter.Add(values.Substring(3, values.IndexOf("]") - 3));
+                values = values.Substring(values.IndexOf("\n") + 1);
+            }
+            else if (values.StartsWith("//"))
             {
                 delimiter.Add(values.Substring(2, 1));
                 values = values.Substring(4);
