@@ -24,10 +24,14 @@ namespace StringCalculator.Test
             Assert.Equal(resultExpected, result);
         }
 
-        [Fact]
-        public void ExceptionWithNegativeNumber()
+        [Theory]
+        [InlineData("1,-2")]
+        [InlineData("-5,-3")]
+        [InlineData("1\n2,-3")]
+        [InlineData("//;\n-1;2")]
+        public void ExceptionWithNegativeNumber(string negativeValue)
         {
-            Action action = () => Calculator.Add("1,-2");
+            Action action = () => Calculator.Add(negativeValue);
             action.Should()
                 .Throw<ArgumentException>()
                 .Where(e => e.Message.StartsWith("negatives not allowed"));

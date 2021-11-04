@@ -17,7 +17,7 @@ namespace StringCalculator
             }
             if (values.Split(delimiter.ToArray(), StringSplitOptions.RemoveEmptyEntries).Any(n => int.Parse((string)n) < 0))
                 throw new ArgumentException("negatives not allowed",
-                    values.Split(',').Where(n => int.Parse(n) < 0)
+                    values.Split(delimiter.ToArray(), StringSplitOptions.RemoveEmptyEntries).Where(n => int.Parse(n) < 0)
                                 .Select(n => $"{n}")
                                 .Aggregate((exc, n) => exc + "," + n));
             return values.Split(delimiter.ToArray(), StringSplitOptions.RemoveEmptyEntries).Where(n => int.Parse(n) >= 0 && int.Parse(n) <= 1000).Sum(int.Parse);
