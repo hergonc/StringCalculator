@@ -47,5 +47,14 @@ namespace StringCalculator.Test
             int result = Calculator.Add(value);
             Assert.Equal(resultExpected, result);
         }
+
+        [Theory]
+        [InlineData("//[*][%]\n1*2%3", 6)]
+        [InlineData("//[;][+]\n1;2+3;4", 10)]
+        public void AddStringWithMultipleDelimiters(string value, int resultExpected)
+        {
+            int result = Calculator.Add(value);
+            Assert.Equal(resultExpected, result);
+        }
     }
 }
