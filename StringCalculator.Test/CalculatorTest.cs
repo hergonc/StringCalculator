@@ -51,6 +51,7 @@ namespace StringCalculator.Test
         [Theory]
         [InlineData("//[*][%]\n1*2%3", 6)]
         [InlineData("//[;][+]\n1;2+3;4", 10)]
+        [InlineData("//[**][%%]\n1**2%%3", 6)]
         public void AddStringWithMultipleDelimiters(string value, int resultExpected)
         {
             int result = Calculator.Add(value);
